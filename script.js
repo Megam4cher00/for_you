@@ -1,5 +1,5 @@
 // Startdatum: 13.03.2025
-const startDate = new Date("2025-03-13T00:00:00");
+const startDate = new Date("2025-08-13T00:00:00");
 
 function updateTimeTogether() {
   const now = new Date();
