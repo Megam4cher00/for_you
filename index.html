@@ -25,6 +25,17 @@
       <h2>Unsere gemeinsame Zeit seit dem 13.08.2025:</h2>
       <p id="timeTogether">0 Tage, 0 Stunden, 0 Minuten, 0 Sekunden</p>
     </div>
+
+    <!-- Neue Termin-Funktion -->
+    <div class="termin-section">
+      <h2> Wichtige Termine! 💌</h2>
+      <form id="terminForm">
+        <input type="text" id="terminTitel" placeholder="Titel (z. B. Kino-Date)" required>
+        <input type="date" id="terminDatum" required>
+        <button type="submit">Speichern</button>
+      </form>
+      <div id="savedTermin" class="saved-termin"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
