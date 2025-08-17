@@ -35,7 +35,6 @@ body {
   animation: glow 2s infinite alternate, bounce 3s infinite ease-in-out;
 }
 
-/* Jeder Buchstabe zeitversetzt */
 #juliana span:nth-child(1) { animation-delay: 0s; }
 #juliana span:nth-child(2) { animation-delay: 0.2s; }
 #juliana span:nth-child(3) { animation-delay: 0.4s; }
@@ -49,7 +48,6 @@ body {
   to   { text-shadow: 0 0 20px #fff, 0 0 40px #ff66cc, 0 0 60px #ff3399; }
 }
 
-/* Hüpfen */
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -79,6 +77,7 @@ body {
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.15);
   display: inline-block;
+  min-width: 350px;
 }
 
 .termin-section h2 {
@@ -108,33 +107,38 @@ body {
   background-color: #ff3385;
 }
 
-.saved-termin {
-  margin-top: 15px;
-  font-size: 1.2em;
-  font-weight: bold;
+/* Termin-Karten */
+.termin-liste {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Floating hearts */
-.hearts::before, .hearts::after {
-  content: "❤️";
-  position: absolute;
-  font-size: 2em;
-  animation: float 8s linear infinite;
+.termin-card {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
 
-@keyframes float {
-  0% {transform: translateY(100vh);}
-  100% {transform: translateY(-100vh);}
+.termin-card:hover {
+  transform: scale(1.05);
 }
 
-.hearts {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
+.termin-card h3 {
+  margin: 0;
+  font-size: 1.3em;
+  color: #fff;
 }
+
+.termin-card p {
+  margin: 5px 0 0;
+  font-size: 1.1em;
+  color: #ffe6f2;
+}
+
 
 
