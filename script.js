@@ -17,32 +17,51 @@ function updateTimeTogether() {
 setInterval(updateTimeTogether, 1000);
 updateTimeTogether();
 
-// ===== Termin-Speicherung =====
+// ===== Mehrere Termine speichern =====
 const terminForm = document.getElementById("terminForm");
-const savedTerminDiv = document.getElementById("savedTermin");
+const terminListe = document.getElementById("terminListe");
 
-// Prüfen, ob schon ein Termin gespeichert ist
-function loadTermin() {
-  const termin = localStorage.getItem("termin");
-  if (termin) {
-    const { titel, datum } = JSON.parse(termin);
-    savedTerminDiv.textContent = `📅 ${titel} am ${datum}`;
-  }
+// Lade vorhandene Termine
+function loadTermine() {
+  terminListe.innerHTML = "";
+  const termine = JSON.parse(localStorage.getItem("termine")) || [];
+
+  termine.forEach((termin, index) => {
+    const terminCard = document.createElement("div");
+    terminCard.classList.add("termin-card");
+
+    const title = document.createElement("h3");
+    title.textContent = `💖 ${termin.titel}`;
+
+    const date = new Date(termin.datum);
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    const formattedDate = date.toLocaleDateString("de-DE", options);
+
+    const dateP = document.createElement("p");
+    dateP.textContent = `📅 ${formattedDate}`;
+
+    terminCard.appendChild(title);
+    terminCard.appendChild(dateP);
+
+    terminListe.appendChild(terminCard);
+  });
 }
 
-// Termin speichern
+// Termin hinzufügen
 terminForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const titel = document.getElementById("terminTitel").value;
   const datum = document.getElementById("terminDatum").value;
 
-  const termin = { titel, datum };
-  localStorage.setItem("termin", JSON.stringify(termin));
+  const termine = JSON.parse(localStorage.getItem("termine")) || [];
+  termine.push({ titel, datum });
 
-  loadTermin(); // neu anzeigen
+  localStorage.setItem("termine", JSON.stringify(termine));
+
+  loadTermine(); // neu anzeigen
   terminForm.reset();
 });
 
-// Beim Laden Termin anzeigen
-loadTermin();
+// Termine anzeigen beim Laden
+loadTermine();
