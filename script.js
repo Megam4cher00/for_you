@@ -1,19 +1,23 @@
 // Startdatum: 13.03.2025
 const startDate = new Date("2025-03-13T00:00:00");
 
-// Funktion zum Berechnen der Stunden
-function updateHoursTogether() {
+function updateTimeTogether() {
   const now = new Date();
   const diff = now - startDate;
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  document.getElementById("hoursTogether").textContent = hours + " Stunden ❤️";
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("timeTogether").textContent =
+    `${days} Tage, ${hours} Stunden, ${minutes} Minuten, ${seconds} Sekunden ❤️`;
 }
 
-// Initialer Aufruf + jede Minute aktualisieren
-updateHoursTogether();
-setInterval(updateHoursTogether, 60 * 1000);
+setInterval(updateTimeTogether, 1000);
+updateTimeTogether();
 
-// Audio-Button
+// Sprachmemo Button
 const voiceBtn = document.getElementById("voiceBtn");
 const voice = document.getElementById("voice");
 
