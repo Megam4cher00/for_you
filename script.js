@@ -16,3 +16,33 @@ function updateTimeTogether() {
 
 setInterval(updateTimeTogether, 1000);
 updateTimeTogether();
+
+// ===== Termin-Speicherung =====
+const terminForm = document.getElementById("terminForm");
+const savedTerminDiv = document.getElementById("savedTermin");
+
+// Prüfen, ob schon ein Termin gespeichert ist
+function loadTermin() {
+  const termin = localStorage.getItem("termin");
+  if (termin) {
+    const { titel, datum } = JSON.parse(termin);
+    savedTerminDiv.textContent = `📅 ${titel} am ${datum}`;
+  }
+}
+
+// Termin speichern
+terminForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const titel = document.getElementById("terminTitel").value;
+  const datum = document.getElementById("terminDatum").value;
+
+  const termin = { titel, datum };
+  localStorage.setItem("termin", JSON.stringify(termin));
+
+  loadTermin(); // neu anzeigen
+  terminForm.reset();
+});
+
+// Beim Laden Termin anzeigen
+loadTermin();
