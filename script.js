@@ -40,11 +40,28 @@ function loadTermine() {
     const dateP = document.createElement("p");
     dateP.textContent = `📅 ${formattedDate}`;
 
+    // 🗑️ Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "🗑️";
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.addEventListener("click", () => {
+      deleteTermin(index);
+    });
+
     terminCard.appendChild(title);
     terminCard.appendChild(dateP);
+    terminCard.appendChild(deleteBtn);
 
     terminListe.appendChild(terminCard);
   });
+}
+
+// Termin löschen
+function deleteTermin(index) {
+  let termine = JSON.parse(localStorage.getItem("termine")) || [];
+  termine.splice(index, 1); // Entferne Termin
+  localStorage.setItem("termine", JSON.stringify(termine));
+  loadTermine(); // Liste neu laden
 }
 
 // Termin hinzufügen
@@ -65,3 +82,4 @@ terminForm.addEventListener("submit", (e) => {
 
 // Termine anzeigen beim Laden
 loadTermine();
+
