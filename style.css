@@ -22,7 +22,7 @@ body {
   z-index: 2;
 }
 
-/* Animierter Name */
+
 #juliana {
   font-size: 4em;
   font-weight: bold;
@@ -70,7 +70,7 @@ body {
   font-weight: bold;
 }
 
-/* Termin-Box */
+
 .termin-section {
   margin-top: 40px;
   padding: 20px;
@@ -107,7 +107,7 @@ body {
   background-color: #ff3385;
 }
 
-/* Termin-Karten */
+
 .termin-liste {
   margin-top: 20px;
   display: flex;
@@ -138,6 +138,60 @@ body {
   margin: 5px 0 0;
   font-size: 1.1em;
   color: #ffe6f2;
+}
+
+
+.termin-liste {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.termin-card {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 15px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.termin-card:hover {
+  transform: scale(1.05);
+}
+
+.termin-card h3 {
+  margin: 0;
+  font-size: 1.3em;
+  color: #fff;
+}
+
+.termin-card p {
+  margin: 5px 0 0;
+  font-size: 1.1em;
+  color: #ffe6f2;
+}
+
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff3385;
+  border: none;
+  color: white;
+  font-size: 0.9em;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: #cc0055;
+  transform: scale(1.2);
 }
 
 
