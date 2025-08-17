@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Meine erste Cloudflare-Seite</title>
+  <title>Für Juliana ❤️</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hallo Welt 🚀</h1>
-  <p>Diese Seite läuft über Cloudflare Pages.</p>
+  <div class="container">
+    <h1 id="juliana">Juliana 💖</h1>
+    <p class="love-message">Für immer wir zwei – ich liebe dich! ❤️</p>
+    
+    <div class="timer">
+      <h2>Unsere gemeinsamen Stunden seit dem 13.03.2025:</h2>
+      <p id="hoursTogether">0</p>
+    </div>
+
+    <button id="voiceBtn">🎶 Klicke hier für meine Nachricht 🎶</button>
+    <audio id="voice" src="voice.mp3"></audio>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
